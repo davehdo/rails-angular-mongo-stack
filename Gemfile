@@ -47,4 +47,6 @@ end
 
 # gem "bower-rails"
 gem 'angularjs-rails'
-gem "angular-rails-templates"
+gem "angular-rails-templates" # helps deliver templates
+
+gem "sprockets", "2.12.3" # using an older version of sprockets for compatibility with anglar-rails-templates
