@@ -42,8 +42,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  	gem 'byebug'
+	gem "rspec-rails" # to test, run 'bundle exec rspec' from the command line
 end
 
 group :development do
@@ -56,6 +57,8 @@ end
 
 # gem "bower-rails"
 gem 'angularjs-rails'
-gem "angular-rails-templates" # helps deliver templates
+gem "angular-rails-templates" # helps deliver angular templates because assets
+	# path won't work given the rails's unique version numbers appended to asset filenames
 
-gem "sprockets", "2.12.3" # using an older version of sprockets for compatibility with anglar-rails-templates
+gem "sprockets", "2.12.3" # using an older version of sprockets for compatibility with angular-rails-templates
+
