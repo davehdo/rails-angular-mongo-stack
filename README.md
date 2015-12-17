@@ -13,5 +13,6 @@ This is a starter template that include the following stack
 ## Styling
 * Sass
 * Bootstrap
+* Fontawesome ```<i class="fa fa-camera-retro"></i>```
 
 
