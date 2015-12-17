@@ -1,7 +1,8 @@
 receta = angular.module("receta", [
 	"templates",
 	"ngRoute",
-	"controllers"
+	"controllers",
+	"ngResource" # helps angular access the serverside RESTfully
 ])
 
 receta.config([ "$routeProvider", 
