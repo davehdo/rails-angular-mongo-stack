@@ -1,12 +1,6 @@
-<div class="row">
-	<div class="col-md-3">
-		<h3>Patients</h3>
-		<ul ng-repeat="patient in patients">
-			<li><a href="/#/patients/{{ patient._id }}">{{ patient.name }}</a></li>
-		</ul>
-	</div>
-	<div class="col-md-9">
-		<h3>Rounding tool</h3>
-		Choose a patient at left
-	</div>
-</div>
+<h3>Patients</h3>
+<ul ng-repeat="patient in patients">
+	<li><a href="/#/patients/{{ patient._id }}">{{ patient.name }}</a></li>
+</ul>
+
+<a href="#/patients/new">New Patient</a>

@@ -1,8 +1,8 @@
 receta = angular.module("receta", [
 	"templates",
 	"ngRoute",
-	"controllers", # the controllers module is defined below
-	"models", # the models module is defined below
+	"controllers", # the controllers module is defined in javascripts/controllers/
+	"models", # the models module is defined in javascripts/models/
 	"ngResource" # helps angular access the serverside RESTfully
 ])
 
@@ -10,40 +10,21 @@ receta.config([ "$routeProvider",
 	($routeProvider) ->
 		$routeProvider
 			.when("/",
-				templateUrl: "patients/index.html"
 				controller: "PatientsIndexController"
+				templateUrl: "patients/index.html"
+			)
+			.when("/patients/new",
+				controller: "PatientsNewController"
+				templateUrl: "patients/new.html"
 			)
 			.when("/patients/:id",
-				templateUrl: "patients/show.html"
 				controller: "PatientsShowController"
+				templateUrl: "patients/show.html"
+			)
+			.when("/patients/:id/edit",
+				controller: "PatientsEditController"
+				templateUrl: "patients/edit.html"
 			)
 
 ])
 
-# =============================  models module  ===============================
-models = angular.module("models", ["ngResource"])
-
-
-models.factory('Patient', ["$resource", ($resource) ->
-	$resource('/patients/:id', # url
-		{}, # param defaults
-		{ # custom actions here (defaults are get({id: 1}), save, query, remove, delete)
-			query: {method: "GET", params: {id: '@id'}, isArray: true}, 
-			update: {method: "PUT"}
-		}
-	)
-])
-
-# ============================  controllers module  ===========================
-controllers = angular.module("controllers", [])
-
-controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope, Patient) -> 
-	$scope.patients = Patient.query()
-	# while this looks synchronous, what is returned is a "future", an object
-	# that will be filled with data when the XHR response returns
-])
-
-controllers.controller("PatientsShowController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
-	# $scope.patients = Patient.query()
-	$scope.patient = Patient.get({ id: $routeParams.id})
-])
