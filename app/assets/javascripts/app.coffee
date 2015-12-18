@@ -25,7 +25,7 @@ models = angular.module("models", ["ngResource"])
 
 models.factory('Patient', ["$resource", ($resource) ->
 	$resource('/patients/:id', {}, {
-		query: {method: "GET", params: {id: ""}, isArray: true}
+		query: {method: "GET", params: {_id: '@id'}, isArray: true}
 	})
 	# class Patient
 	# 	constructor: (taskListId) ->
@@ -44,12 +44,6 @@ models.factory('Patient', ["$resource", ($resource) ->
 # ============================  controllers module  ===========================
 controllers = angular.module("controllers", [])
 
-# patients = [
-# 	{"id": 1, "name": "Bob"},
-# 	{"id": 2, "name": "Bill"},
-# 	{"id": 3, "name": "John"},
-# ]
-
 controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope, Patient) -> 
 	$scope.patients = Patient.query()
 	# while this looks synchronous, what is returned is a "future", an object
@@ -59,7 +53,5 @@ controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope,
 controllers.controller("PatientsShowController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
 	$scope.patients = Patient.query()
 	
-	
-	$scope.patient = (patients.filter (i) ->
-		i.id == parseInt( $routeParams.id))[0]
+	$scope.patient = Patient.get({ _id: $routeParams.id})
 ])
