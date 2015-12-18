@@ -19,4 +19,7 @@ controllers.controller("PatientsNewController", ["$scope", "Patient", ($scope, P
 
 controllers.controller("PatientsEditController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
 	$scope.patient = Patient.get({ id: $routeParams.id})
+	
+	$scope.save = () ->
+		Patient.update(angular.copy($scope.patient))
 ])
