@@ -1,14 +1,6 @@
 <h3>Editing {{ patient.name }}</h3>
 
-<form class="new_patient form">
-	<div class="input-group">	
-		<label class="form-label">Name</label>
-		<input type="text" ng-model="patient.name" class="form-control" />
-	</div>
-	
-	<div class="input-group">
-		<input type="submit" class="btn btn-default" ng-click="save()">
-	</div>
-</form>
+<div ng-render="patients/_form.html"></div>
 
-<a href="#/patients/{{ patient._id }}">Back</a>
+<a href="#/patients/{{ patient._id }}">Back</a> |
+<a ng-click="destroy()">Destroy</a>

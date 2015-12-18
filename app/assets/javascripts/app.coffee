@@ -30,5 +30,11 @@ receta.config([ "$routeProvider",
 
 # turns on token in API requests
 receta.config ($httpProvider) ->
-  authToken = $("meta[name=\"csrf-token\"]").attr("content")
-  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+	authToken = $("meta[name=\"csrf-token\"]").attr("content")
+	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
+#
+receta.directive("ngRender", () ->
+	restrict: "A"
+	templateUrl: "patients/_form.html"
+)
