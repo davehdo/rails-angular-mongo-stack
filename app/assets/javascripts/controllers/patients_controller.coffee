@@ -8,18 +8,17 @@ controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope,
 ])
 
 controllers.controller("PatientsShowController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
-	# $scope.patients ||= Patient.query()
 	$scope.patient = Patient.get({ id: $routeParams.id})
+	# console.log $scope.patient
 ])
 
 controllers.controller("PatientsNewController", ["$scope", "Patient", ($scope, Patient) -> 
 	$scope.patient = new Patient
-	
 ])
 
 controllers.controller("PatientsEditController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
 	$scope.patient = Patient.get({ id: $routeParams.id})
 	
 	$scope.save = () ->
-		Patient.update(angular.copy($scope.patient))
+		$scope.patient.$update() # parameters, success, error
 ])
