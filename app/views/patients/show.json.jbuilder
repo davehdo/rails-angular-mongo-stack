@@ -1,1 +1,3 @@
-json.extract! @patient, :id, :name, :created_at, :updated_at
+json.extract! @patient, :id, :name
+json._id @patient.to_param
+json.url patient_url(@patient, format: :json)

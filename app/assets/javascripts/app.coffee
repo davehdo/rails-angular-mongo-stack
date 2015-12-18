@@ -23,22 +23,15 @@ receta.config([ "$routeProvider",
 # =============================  models module  ===============================
 models = angular.module("models", ["ngResource"])
 
+
 models.factory('Patient', ["$resource", ($resource) ->
-	$resource('/patients/:id', {}, {
-		query: {method: "GET", params: {_id: '@id'}, isArray: true}
-	})
-	# class Patient
-	# 	constructor: (taskListId) ->
-	# 		@service = $resource('/patients/:id',
-	# 			{task_list_id: taskListId, id: '@id'})
-	# 
-	# 	create: (attrs) ->
-	# 		new @service(task: attrs).$save (task) ->
-	# 			attrs.id = task.id
-	# 		attrs
-	# 
-	# 	all: ->
-	# 		@service.query()
+	$resource('/patients/:id', # url
+		{}, # param defaults
+		{ # custom actions here (defaults are get({id: 1}), save, query, remove, delete)
+			query: {method: "GET", params: {id: '@id'}, isArray: true}, 
+			update: {method: "PUT"}
+		}
+	)
 ])
 
 # ============================  controllers module  ===========================
@@ -51,7 +44,6 @@ controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope,
 ])
 
 controllers.controller("PatientsShowController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
-	$scope.patients = Patient.query()
-	
-	$scope.patient = Patient.get({ _id: $routeParams.id})
+	# $scope.patients = Patient.query()
+	$scope.patient = Patient.get({ id: $routeParams.id})
 ])

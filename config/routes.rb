@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :patients, only: [:index, :create, :update, :destroy], defaults: {format: :json}
+  resources :patients, only: [:index, :show, :create, :update, :destroy], defaults: {format: :json}
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
