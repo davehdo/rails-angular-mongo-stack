@@ -1,7 +1,8 @@
 receta = angular.module("receta", [
 	"templates",
 	"ngRoute",
-	"controllers",
+	"controllers", # the controllers module is defined below
+	"models", # the models module is defined below
 	"ngResource" # helps angular access the serverside RESTfully
 ])
 
@@ -19,20 +20,46 @@ receta.config([ "$routeProvider",
 
 ])
 
-controllers = angular.module("controllers", [])
+# =============================  models module  ===============================
+models = angular.module("models", ["ngResource"])
 
-patients = [
-	{"id": 1, "name": "Bob"},
-	{"id": 2, "name": "Bill"},
-	{"id": 3, "name": "John"},
-]
-
-controllers.controller("PatientsIndexController", ["$scope", ($scope) -> 
-	$scope.patients = patients
+models.factory('Patient', ["$resource", ($resource) ->
+	$resource('/patients/:id', {}, {
+		query: {method: "GET", params: {id: ""}, isArray: true}
+	})
+	# class Patient
+	# 	constructor: (taskListId) ->
+	# 		@service = $resource('/patients/:id',
+	# 			{task_list_id: taskListId, id: '@id'})
+	# 
+	# 	create: (attrs) ->
+	# 		new @service(task: attrs).$save (task) ->
+	# 			attrs.id = task.id
+	# 		attrs
+	# 
+	# 	all: ->
+	# 		@service.query()
 ])
 
-controllers.controller("PatientsShowController", ["$scope", "$routeParams", ($scope, $routeParams) -> 
-	$scope.patients = patients
+# ============================  controllers module  ===========================
+controllers = angular.module("controllers", [])
+
+# patients = [
+# 	{"id": 1, "name": "Bob"},
+# 	{"id": 2, "name": "Bill"},
+# 	{"id": 3, "name": "John"},
+# ]
+
+controllers.controller("PatientsIndexController", ["$scope", "Patient", ($scope, Patient) -> 
+	$scope.patients = Patient.query()
+	# while this looks synchronous, what is returned is a "future", an object
+	# that will be filled with data when the XHR response returns
+])
+
+controllers.controller("PatientsShowController", ["$scope", "$routeParams", "Patient", ($scope, $routeParams, Patient) -> 
+	$scope.patients = Patient.query()
+	
+	
 	$scope.patient = (patients.filter (i) ->
 		i.id == parseInt( $routeParams.id))[0]
 ])
