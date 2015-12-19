@@ -1,3 +1,7 @@
+<div class="alert alert-warning" ng-show="flash.getMessage()">
+    <p>{{flash.getMessage()}}</p>
+</div>
+
 <h3>{{ patient.name }}</h3>
 
 <a href="#/">Back</a> | <a href="#/patients/{{ patient._id }}/edit">Edit</a>

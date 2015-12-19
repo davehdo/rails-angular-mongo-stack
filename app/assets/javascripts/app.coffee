@@ -3,13 +3,14 @@ receta = angular.module("receta", [
 	"ngRoute",
 	"controllers", # the controllers module is defined in javascripts/controllers/
 	"models", # the models module is defined in javascripts/models/
-	"ngResource" # helps angular access the serverside RESTfully
+	"ngResource", # helps angular access the serverside RESTfully
+	"services"
 ])
 
 receta.config([ "$routeProvider", 
 	($routeProvider) ->
 		$routeProvider
-			.when("/",
+			.when("/patients",
 				controller: "PatientsIndexController"
 				templateUrl: "patients/index.html"
 			)
@@ -24,6 +25,9 @@ receta.config([ "$routeProvider",
 			.when("/patients/:id/edit",
 				controller: "PatientsEditController"
 				templateUrl: "patients/edit.html"
+			)
+			.otherwise(
+				redirectTo: "/patients"
 			)
 
 ])

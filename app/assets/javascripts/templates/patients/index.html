@@ -1,3 +1,7 @@
+<div class="alert alert-warning" ng-show="flash.getMessage()">
+    <p>{{flash.getMessage()}}</p>
+</div>
+
 <h3>Patients</h3>
 <ul ng-repeat="patient in patients">
 	<li><a href="/#/patients/{{ patient._id }}">{{ patient.name }}</a></li>
