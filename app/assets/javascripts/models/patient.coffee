@@ -1,5 +1,5 @@
 # =============================  models module  ===============================
-models = angular.module("models", ["ngResource"])
+models = angular.module("models")
 
 # defaults methods are get({id: 1}), save, query, remove, delete
 models.factory('Patient', ["$resource", "Model", ($resource, Model) ->
