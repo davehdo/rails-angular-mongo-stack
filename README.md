@@ -16,3 +16,5 @@ This is a starter template that include the following stack
 * Fontawesome ```<i class="fa fa-camera-retro"></i>```
 
 
+# Getting Started
+1. Update config/mongoid.yml to point the database to the correct location. You could use a local mongodb installation or a cloud-based service like MongoLab
