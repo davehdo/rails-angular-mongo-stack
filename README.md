@@ -24,16 +24,25 @@ This is a starter template that include the following stack
 1. Prepare the rails back-end for receiving, storing, and returning the new field
 
 * In app/models/patient.rb, add a line
+```
 field :field_name, type: String
+```
 
 * In app/controllers/patients_controller.rb, scroll to the permit method and whitelist the field name
+```
+params.require(:patient).permit(:name, :field_name)
+```
 
 * In app/views/patients/index.json.jbuilder and app/views/patients/show.json.jbuilder
 add the name of the field to the extract method
+```
+json.extract! @patient, :id, :name, :field_name
+```
 
-
-1. Update the front end form to display the field   
+2. Update the front end form to display the field   
 
 * In assets/javascripts/templates/patients/show.html, add the field to the template
-
+```
+{{ patient.field_name}}
+```
 * In assets/javascripts/templates/_form.html.erb, add a form object to edit the field
