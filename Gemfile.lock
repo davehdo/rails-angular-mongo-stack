@@ -78,6 +78,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    lodash-rails (4.0.0)
+      railties (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -85,6 +87,8 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    momentjs-rails (2.11.0)
+      railties (>= 3.1)
     mongo (2.2.1)
       bson (~> 4.0)
     mongoid (5.0.1)
@@ -189,6 +193,8 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  lodash-rails
+  momentjs-rails
   mongoid (~> 5.0.0)
   rails (= 4.2.4)
   rspec-rails

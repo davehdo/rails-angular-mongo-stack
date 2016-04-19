@@ -63,3 +63,5 @@ gem "angular-rails-templates" # helps deliver angular templates because assets
 
 gem "sprockets", "2.12.3" # using an older version of sprockets for compatibility with angular-rails-templates
 
+gem "momentjs-rails"
+gem "lodash-rails"

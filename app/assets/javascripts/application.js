@@ -16,5 +16,7 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require bootstrap-sprockets
+//= require lodash
+//= require moment
 //= require_tree ./templates
 //= require_tree .
