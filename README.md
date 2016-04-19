@@ -9,6 +9,8 @@ This is a starter template that include the following stack
 * Angular
 * Jquery
 * Coffee
+* Lodash
+* Moment.js
 
 ## Styling
 * Sass
