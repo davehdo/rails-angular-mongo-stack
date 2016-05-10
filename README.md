@@ -1,5 +1,5 @@
 # Introduction
-This is a starter template that include the following stack
+This is a starter template that is Heroku-ready and include the following stack
 
 ## Server side
 * Rails 4.2.4
@@ -48,3 +48,24 @@ json.extract! @patient, :id, :name, :field_name
 {{ patient.field_name}}
 ```
 * In assets/javascripts/templates/_form.html.erb, add a form object to edit the field
+
+# Deploying to Heroku (and mLab for MongoDB)
+1. Create a new app in Heroku
+1. Provision a mLab Add-on
+1. This should automatically add an environment variable in Heroku called MONGODB_URI that has all the information necessary to connect to the mongo database. The value should take the following format:
+```
+mongodb://username:password@host1:port1,host2:port2/database
+```
+1. Update mongoid.yml with the appropriate settings to connect to mLab
+```
+production:
+    clients:
+        default:
+            uri: "<%= ENV['MONGODB_URI'] %>"
+
+            options:
+                max_retries: 30
+                retry_interval: 1
+                timeout: 15
+                refresh_interval: 10
+```
