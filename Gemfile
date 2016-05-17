@@ -65,3 +65,4 @@ gem "sprockets", "2.12.3" # using an older version of sprockets for compatibilit
 
 gem "momentjs-rails"
 gem "lodash-rails"
+gem "database_cleaner", :group => :test
