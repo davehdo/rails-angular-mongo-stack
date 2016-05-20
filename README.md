@@ -69,3 +69,8 @@ production:
                 timeout: 15
                 refresh_interval: 10
 ```
+
+1.create database indexes
+```
+rake db:mongoid:create_indexes
+```
