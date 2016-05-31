@@ -1,27 +1,32 @@
 # Introduction
 This is a starter template that is Heroku-ready and include the following stack
 
-## Server side
+# Getting started
+
+## This app uses the Heroku-ready RAM stack
+[More information on the RAM stack is found here](https://bitbucket.org/davehdo/ram-stack/)
+
+### Server side
 * Rails 4.2.4
 * Mongodb
 
-## Client side
+### Client side
 * Angular
 * Jquery
 * Coffee
 * Lodash
 * Moment.js
 
-## Styling
+### Styling
 * Sass
 * Bootstrap
 * Fontawesome ```<i class="fa fa-camera-retro"></i>```
 
 
-# Getting Started
+## Configure the database
 1. Update config/mongoid.yml to point the database to the correct location. You could use a local mongodb installation or a cloud-based service like MongoLab
 
-# How to add another field to the scaffold
+## How to add another field to the scaffold
 
 1. Prepare the rails back-end for receiving, storing, and returning the new field
 
@@ -49,7 +54,7 @@ json.extract! @patient, :id, :name, :field_name
 ```
 * In assets/javascripts/templates/_form.html.erb, add a form object to edit the field
 
-# Deploying to Heroku (and mLab for MongoDB)
+## Deploying to Heroku (and mLab for MongoDB)
 1. Create a new app in Heroku
 1. Provision a mLab Add-on
 1. This should automatically add an environment variable in Heroku called MONGODB_URI that has all the information necessary to connect to the mongo database. The value should take the following format:
