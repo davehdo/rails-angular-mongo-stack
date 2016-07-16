@@ -29,7 +29,6 @@ receta.config([ "$routeProvider",
 			.otherwise(
 				redirectTo: "/patients"
 			)
-
 ])
 
 
@@ -42,8 +41,10 @@ models = angular.module("models", ["ngResource"])
 # in subsequent model files, put at the top:
 # models = angular.module("models")
 
+services = angular.module("services", [])
 
 # turns on token in API requests
-receta.config ($httpProvider) ->
+receta.config(["$httpProvider", ($httpProvider) ->
 	authToken = $("meta[name=\"csrf-token\"]").attr("content")
 	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+])
