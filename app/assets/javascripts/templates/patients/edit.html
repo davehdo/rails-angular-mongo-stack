@@ -4,7 +4,7 @@
 
 <h3>Editing {{ patient.name }}</h3>
 
-<div ng-render="patients/_form.html"></div>
+<div ng-include="'patients/_form.html'"></div>
 
 <a href="#/patients/{{ patient._id }}">Back</a> |
 <a ng-click="destroy()">Destroy</a>

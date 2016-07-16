@@ -47,9 +47,3 @@ models = angular.module("models", ["ngResource"])
 receta.config ($httpProvider) ->
 	authToken = $("meta[name=\"csrf-token\"]").attr("content")
 	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-
-#
-receta.directive("ngRender", () ->
-	restrict: "A"
-	templateUrl: "patients/_form.html"
-)
